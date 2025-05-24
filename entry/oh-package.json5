@@ -1,0 +1,19 @@
+{
+  "name": "entry",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "",
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "@amap/amap_lbs_common": ">=1.2.0",
+    "@amap/amap_lbs_map3d": ">=2.2.0",
+    "@amap/amap_lbs_location": ">=1.2.0",
+    "@amap/amap_lbs_navi": ">=2.2.0",
+    "@bdmap/base": "1.2.7",
+    "@bdmap/search": "1.2.7",
+    "@bdmap/map": "1.2.7",
+    "@bdmap/locsdk": "1.1.4"
+  }
+}
+

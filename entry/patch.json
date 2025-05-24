@@ -1,0 +1,11 @@
+{
+  "app": {
+    "bundleName": "com.yx.school",
+    "patchVersionCode": 2000087,
+    "versionCode": 1000000
+  },
+  "module": {
+    "name": "entry",
+    "type": "hotreload"
+  }
+}

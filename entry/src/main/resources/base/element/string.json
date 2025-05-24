@@ -1,0 +1,28 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "APPROXIMATELY_LOCATION",
+      "value": "reason"
+    },
+    {
+      "name": "LOCATION",
+      "value": "reason"
+    },
+    {
+      "name": "reason",
+      "value": "定位权限"
+    }
+  ]
+}
