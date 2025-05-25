@@ -145,6 +145,7 @@ struct Index {
       location: this.center!,
       radius: 1000
     }
+    this.searchList = []
     let option = new PoiNearbySearchOption(opParams)
     search.searchNearby(option)
       .then((res: PoiResult) => {
@@ -207,7 +208,8 @@ struct Index {
             .alignItems(HorizontalAlign.Start)
           }
           .onClick(() => {
-            this.walkPlanning(new LatLng(38.298122, 109.726588))
+            // 31.27570,121.580936 38.298122, 109.726588
+            this.walkPlanning(new LatLng(31.27570, 121.580936))
           })
 
           Row({ space: 12 }) {

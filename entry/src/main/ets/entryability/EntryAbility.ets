@@ -12,7 +12,6 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
-    this.requestPermission()
     LocationClient.setAgreePrivacy(true); // 设置是否同意隐私政策
     LocManager.getInstance().init(this.context);
   }
@@ -21,19 +20,6 @@ export default class EntryAbility extends UIAbility {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
   }
 
-
-  requestPermission = async () => {
-    let permissionRequestResult = await abilityAccessCtrl.createAtManager().requestPermissionsFromUser(this.context,
-      [
-        'ohos.permission.LOCATION',
-        'ohos.permission.APPROXIMATELY_LOCATION',
-        'ohos.permission.APP_TRACKING_CONSENT'
-      ]);
-    // 如果权限列表中有-1，说明用户拒绝了授权
-    if (permissionRequestResult.authResults[0] === 0) {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'request permission success');
-    }
-  }
   onWindowStageCreate(windowStage: window.WindowStage): void {
     let appId = this.getBundleInfoSignatureInfoAppId()
     hilog.info(0x000, 'testTag', 'appId=: %{public}s', appId)

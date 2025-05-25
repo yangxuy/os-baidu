@@ -1,6 +1,6 @@
 import { LatLng } from '@bdmap/base';
 import { BDLocation, BDLocationListener, LocationClient, LocationClientOption, LocationMode, Poi } from '@bdmap/locsdk'
-import { Context, WantAgent } from '@kit.AbilityKit';
+import { abilityAccessCtrl, Context, WantAgent } from '@kit.AbilityKit';
 
 export class LocManager {
   private client: LocationClient | null = null;
@@ -19,6 +19,20 @@ export class LocManager {
 
   }
 
+
+  requestPermission = async (context: Context) => {
+    let permissionRequestResult = await abilityAccessCtrl.createAtManager().requestPermissionsFromUser(context,
+      [
+        'ohos.permission.LOCATION',
+        'ohos.permission.APPROXIMATELY_LOCATION',
+        'ohos.permission.APP_TRACKING_CONSENT'
+      ]);
+    // 如果权限列表中有-1，说明用户拒绝了授权
+    if (permissionRequestResult.authResults[0] === 0) {
+      this.requestSingleLocation()
+    }
+  }
+
   init(context: Context) {
     if (this.client == null) {
       try {
@@ -33,12 +47,11 @@ export class LocManager {
       this.registerListener({
         onReceiveLocation(bdLocation: BDLocation): void {
           this.center = new LatLng(bdLocation.getLatitude(), bdLocation.getLongitude())
-          console.log('onReceiveLocation', this.center)
           AppStorage.setOrCreate('center', this.center);
         }
       })
 
-      this.requestSingleLocation()
+      this.requestPermission(context)
     }
   }
 
