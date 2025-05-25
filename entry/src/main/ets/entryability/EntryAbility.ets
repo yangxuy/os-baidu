@@ -35,17 +35,20 @@ export default class EntryAbility extends UIAbility {
     }
   }
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    // Main window is created, set main page for this ability
-    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
     let appId = this.getBundleInfoSignatureInfoAppId()
     hilog.info(0x000, 'testTag', 'appId=: %{public}s', appId)
     Initializer.getInstance().initialize("lBuM1IVdkQAtvlX92z6KWcLFmHUq9TR4");
     LocationClient.checkAuthKey("lBuM1IVdkQAtvlX92z6KWcLFmHUq9TR4", (result: string) => {
       console.debug("result = " + result); // 可打印出是否鉴权成功的结果
     });
-    windowStage.loadContent('pages/Index2', (err) => {
+    windowStage.loadContent('pages/Index', (err) => {
       let windowClass: window.Window = windowStage.getMainWindowSync();
       windowClass.setWindowLayoutFullScreen(true)
+
+      const type = window.AvoidAreaType.TYPE_SYSTEM; // 以状态栏避让为例
+      const avoidArea = windowClass.getWindowAvoidArea(type);
+      let topRectHeight = avoidArea.topRect.height; // 获取状态栏区域高度
+      AppStorage.setOrCreate('topHeight', px2vp(topRectHeight));
     });
   }
 

@@ -1,8 +1,5 @@
 {
   "src": [
-    "pages/Index",
-    "pages/Nav",
-    "pages/Index2",
-    "pages/Index3"
+    "pages/Index"
   ]
 }
