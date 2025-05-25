@@ -209,7 +209,7 @@ struct Index {
           }
           .onClick(() => {
             // 31.27570,121.580936 38.298122, 109.726588
-            this.walkPlanning(new LatLng(31.27570, 121.580936))
+            this.walkPlanning(new LatLng(38.298122, 109.726588))
           })
 
           Row({ space: 12 }) {
