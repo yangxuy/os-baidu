@@ -27,7 +27,7 @@ export default class EntryAbility extends UIAbility {
     LocationClient.checkAuthKey("lBuM1IVdkQAtvlX92z6KWcLFmHUq9TR4", (result: string) => {
       console.debug("result = " + result); // 可打印出是否鉴权成功的结果
     });
-    windowStage.loadContent('pages/Index', (err) => {
+    windowStage.loadContent('pages/Login', (err) => {
       let windowClass: window.Window = windowStage.getMainWindowSync();
       windowClass.setWindowLayoutFullScreen(true)
 
